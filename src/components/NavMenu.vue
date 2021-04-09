@@ -67,6 +67,7 @@ export default {
 
 .nav-menu__menu-list {
   background-color: white;
+  z-index: 100;
   color: black;
   padding-top: 20px;
   border: 1px solid black;
