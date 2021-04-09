@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import NavMenu from "@/components/NavMenu";
+import NavMenu from "@/components/NavMenu/NavMenu";
 import {getSubtitleFormUrl} from "@/utils/commonUtils";
 
 export default {

@@ -20,8 +20,8 @@
 <script>
 import {mapActions, mapGetters} from "vuex";
 
-import UserAvatar from "@/components/profile/UserAvatar";
-import UserData from "@/components/profile/UserData";
+import UserAvatar from "@/components/profile/UserAvatar/UserAvatar";
+import UserData from "@/components/profile/UserData/UserData";
 
 import ERRORS from "@/components/profile/errors";
 
@@ -79,7 +79,7 @@ export default {
       this.user = Object.assign({}, this.storeUser)
     }
   },
-  beforeMount() {
+  mounted() {
     this.fetchUser()
     .then(() => this.updateDataUser())
   }

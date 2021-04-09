@@ -46,7 +46,7 @@
 <script>
 import {mapActions, mapGetters} from "vuex";
 
-import SiteListItem from "@/components/SiteListItem";
+import SiteListItem from "@/components/sites/SiteListItem/SiteListItem";
 
 export default {
   name: 'SiteCardPage',
