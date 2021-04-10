@@ -1,4 +1,13 @@
-# tracktik
+# tracktik-test
+
+#Usage
+
+## Development build and serve
+```
+npm install
+npm run serve
+```
+In order to set an API URL, you need to change it in the config.json file
 
 ## Project setup
 ```

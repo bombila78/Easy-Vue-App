@@ -4,7 +4,7 @@ import * as userApi from '../../../api/user'
 export default {
     actions: {
         async fetchUser({ commit }) {
-            const user = userApi.getUser()
+            const user = await userApi.getUser()
             commit(types.UPDATE_USER, user)
         },
         async updateUser({ commit }, userData) {
