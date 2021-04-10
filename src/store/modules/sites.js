@@ -1,12 +1,22 @@
 import { serverUrl } from '../../config.json'
 import {convertSiteData} from '../../utils/siteUtils'
+import {getQueryFromSearchParams} from "@/utils/commonUtils";
+import {DEFAULT_PARAMS} from "@/constants/defaultParams";
+
 
 export default {
     actions: {
-        async fetchSites({ commit }) {
-            const res = await fetch(`${serverUrl}/sites?_page=1&_limit=20`)
+        async fetchSites({ commit, state }, searchParams = DEFAULT_PARAMS()) {
+            commit('updateCurrentParams', searchParams)
+            const res = await fetch(`${serverUrl}/sites${getQueryFromSearchParams(state.currentParams)}`)
             const sites = await res.json()
             commit('getSites', sites)
+        },
+        async loadMoreSites({ commit, state }) {
+            commit('plusOnePage')
+            const res = await fetch(`${serverUrl}/sites${getQueryFromSearchParams(state.currentParams)}`)
+            const sites = await res.json()
+            commit('updateSites', sites)
         },
         async fetchSiteById({ commit }, { siteId }) {
             const res = await fetch(`${serverUrl}/sites/${siteId}`)
@@ -23,11 +33,22 @@ export default {
         },
         updateChosenSite(state, newSite) {
             state.siteChosen = newSite
+        },
+        updateCurrentParams(state, searchParams) {
+            state.currentParams = Object.assign(
+                {},
+                searchParams,
+                { sorting: { field: searchParams.sorting.field, order: searchParams.sorting.order }}
+                )
+        },
+        plusOnePage(state) {
+            state.currentParams.page++
         }
     },
     state: {
         sites: [],
-        siteChosen: null
+        siteChosen: null,
+        currentParams: DEFAULT_PARAMS()
     },
     getters: {
         allSites({ sites }) {

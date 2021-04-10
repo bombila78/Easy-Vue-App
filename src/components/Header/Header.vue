@@ -29,7 +29,7 @@
 
 <script>
 import NavMenu from "@/components/NavMenu/NavMenu";
-import {getSubtitleFormUrl} from "@/utils/commonUtils";
+import {getSubtitleFromUrl} from "@/utils/commonUtils";
 
 export default {
   name: 'Header',
@@ -41,7 +41,7 @@ export default {
   }),
   computed: {
     subTitle() {
-      return getSubtitleFormUrl(this.$route.path)
+      return getSubtitleFromUrl(this.$route.path)
     }
   },
   methods: {
