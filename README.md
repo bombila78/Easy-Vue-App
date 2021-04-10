@@ -3,31 +3,28 @@
 #Usage
 
 ## Development build and serve
-```
-npm install
-npm run serve
-```
 In order to set an API URL, you need to change it in the config.json file
-
-## Project setup
 ```
 npm install
-```
-
-### Compiles and hot-reloads for development
-```
 npm run serve
 ```
 
-### Compiles and minifies for production
+
+## Production build and serve
+In order to set an API URL, you need to change it in the config.json file
 ```
+npm install
 npm run build
 ```
+After build you can serve the bundle from the 'dist' directory
+on local computer or on any server
 
-### Lints and fixes files
-```
-npm run lint
-```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Application 
+
+There is only mobile version presented
+
+On the sites page there is an opportunity to filter and sort,
+pagination implemented through the 'Load more' button.
+
+Also there is the Profile page presented, where user can update it's data

@@ -40,10 +40,6 @@ export default {
         alias: 'Sites'
       },
       {
-        link: '/clients',
-        alias: 'Clients'
-      },
-      {
         link: '/profile',
         alias: 'Profile'
       }
