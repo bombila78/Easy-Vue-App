@@ -3,7 +3,6 @@ import Router from 'vue-router'
 
 import HomePage from "@/views/HomePage"
 import SitesListPage from "@/views/SitesListPage";
-import ClientsPage from "@/views/ClientsPage";
 import ProfilePage from "@/views/ProfilePage";
 import SiteCardPage from "@/views/SiteCardPage";
 
@@ -25,10 +24,6 @@ export default new Router({
             path: '/sites/:id',
             component: SiteCardPage,
             props: route => ({ backAvailable: !!route.query.ba })
-        },
-        {
-            path: '/clients',
-            component: ClientsPage
         },
         {
             path: '/profile',
