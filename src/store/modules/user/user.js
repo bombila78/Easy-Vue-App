@@ -1,11 +1,12 @@
-import { serverUrl } from '../../config.json'
+import { serverUrl } from '../../../config.json'
+import * as types from './types'
 
 export default {
     actions: {
         async fetchUser({ commit }) {
             const res = await fetch(`${serverUrl}/me`)
             const user = await res.json()
-            commit('updateUser', user)
+            commit(types.UPDATE_USER, user)
         },
         async updateUser({ commit }, userData) {
             const res = await fetch(`${serverUrl}/me`, {
@@ -16,11 +17,11 @@ export default {
                 body: JSON.stringify(userData)
             })
             const updateUser = await res.json()
-            commit('updateUser', updateUser)
+            commit(types.UPDATE_USER, updateUser)
         }
     },
     mutations: {
-        updateUser(state, newUser) {
+        [types.UPDATE_USER](state, newUser) {
             state.user = newUser
         }
     },
