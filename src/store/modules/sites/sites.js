@@ -1,27 +1,23 @@
-import { serverUrl } from '../../../config.json'
 import {convertSiteData} from '../../../utils/siteUtils'
-import {getQueryFromSearchParams} from "@/utils/commonUtils";
 import {DEFAULT_PARAMS} from "@/constants/defaultParams";
 import * as types from './types'
+import * as sitesApi from "@/api/sites";
 
 
 export default {
     actions: {
         async fetchSites({ commit, state }, searchParams = DEFAULT_PARAMS()) {
             commit(types.UPDATE_CURRENT_PARAMS, searchParams)
-            const res = await fetch(`${serverUrl}/sites${getQueryFromSearchParams(state.currentParams)}`)
-            const sites = await res.json()
+            const sites = await sitesApi.getSites(state.currentParams)
             commit(types.UPDATE_SITES, sites)
         },
         async loadMoreSites({ commit, state }) {
             commit(types.PLUS_ONE_PAGE)
-            const res = await fetch(`${serverUrl}/sites${getQueryFromSearchParams(state.currentParams)}`)
-            const sites = await res.json()
+            const sites = await sitesApi.getSites(state.currentParams)
             commit(types.ADD_MORE_SITES, sites)
         },
         async fetchSiteById({ commit }, { siteId }) {
-            const res = await fetch(`${serverUrl}/sites/${siteId}`)
-            const site = await res.json()
+            const site = sitesApi.getSiteById(siteId)
             commit(types.UPDATE_CHOSEN_SITE, site)
         }
     },
